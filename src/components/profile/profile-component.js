@@ -1,10 +1,9 @@
+import { actions } from '../../store/reducers/profileReducer';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import './profile-component.css';
-import axios from 'axios/index';
-import { types } from '../../store/actions/actionTypes';
 
 class Profile extends Component {
 	render() {
@@ -30,14 +29,6 @@ Profile.propTypes = {
 };
 
 class ProfileComponent extends Component {
-
-	constructor() {
-		super();
-		this.state = {
-			profiles: [],
-			loaded: false
-		}
-	}
 	render() {
 		if (this.props.loaded)
 		return (
@@ -46,11 +37,7 @@ class ProfileComponent extends Component {
 			</div>
 		);
 		else {
-			axios.get('/profiles.json')
-				.then((response) => {
-					this.props.setProfiles(response.data);
-					this.setState({loaded: true});
-				});
+			this.props.getProfiles();
 			return (
 				<div>loading...</div>
 			)
@@ -66,7 +53,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	setProfiles: (profiles) => dispatch({type: types.SET_PROFILES, payLoad: {profiles: profiles}})
+	getProfiles: () => dispatch(actions.getProfiles())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileComponent);
