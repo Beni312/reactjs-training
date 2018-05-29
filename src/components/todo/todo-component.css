@@ -1,0 +1,8 @@
+#todoInput {
+  margin-bottom: 10px;
+}
+
+#remove {
+  color: red;
+  cursor: pointer;
+}
