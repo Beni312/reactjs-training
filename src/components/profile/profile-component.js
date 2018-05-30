@@ -29,17 +29,27 @@ Profile.propTypes = {
 };
 
 class ProfileComponent extends Component {
+	componentDidMount() {
+		this.props.getProfiles();
+	}
+
 	render() {
-		if (this.props.loaded)
-		return (
-			<div className="row">
-				{this.props.profiles.map((item, i) => <Profile firstName={item.firstName} lastName={item.lastName} username={item.username} pictureUrl={item.pictureUrl} key={i}/>)}
-			</div>
-		);
-		else {
-			this.props.getProfiles();
+		console.log(this.props);
+		if (this.props.loading) {
 			return (
 				<div>loading...</div>
+			)
+		} else if (this.props.error) {
+			return (
+				<div className="errorMessage">
+					{this.props.error}
+				</div>
+			);
+		} else {
+			return (
+				<div className="row">
+					{this.props.profiles.map((item, i) => <Profile firstName={item.firstName} lastName={item.lastName} username={item.username} pictureUrl={item.pictureUrl} key={i}/>)}
+				</div>
 			)
 		}
 	}
@@ -48,7 +58,8 @@ class ProfileComponent extends Component {
 const mapStateToProps = (state) => {
 	return {
 		profiles: state.profile.profiles,
-		loaded: state.profile.loaded
+		loading: state.profile.loading,
+		error: state.profile.error
 	}
 };
 

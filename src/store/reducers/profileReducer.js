@@ -3,7 +3,8 @@ import { types } from '../actions/actionTypes';
 
 const initialState = {
 	profiles: [],
-	loaded: false
+	loading: null,
+	error: null
 };
 
 export function reducer(state = initialState, action) {
@@ -11,16 +12,17 @@ export function reducer(state = initialState, action) {
 	switch (action.type) {
 		case types.GET_PROFILES_REQUEST: return {
 			...state,
-			loaded: false
+			loading: true
 		};
 		case types.GET_PROFILES_SUCCESS: return {
 			...state,
 			profiles: action.payload,
-			loaded: true
+			loading: false
 		};
 		case types.GET_PROFILES_FAILURE: return {
 			...state,
-			loaded: false
+			loading: false,
+			error: action.payload
 		};
 		default: {
 			return state;
