@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import './App.css';
-import TodoComponent from './components/todo/todo-component';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ProfileComponent from './components/profile/profile-component';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Nav, NavItem, Navbar, NavLink } from 'reactstrap';
+import React, { Component } from 'react';
+import ProfileComponent from './components/profile/profile-component';
+import TodoComponent from './components/todo/todo-component';
 
 class App extends Component {
 	render() {
@@ -22,6 +22,7 @@ class App extends Component {
 					</Navbar>
 					<div className="container-fluid">
 						<Switch>
+							<Route path="/" exact render={() => (<Redirect to="/todo" />)}/>
 							<Route path="/todo" exact component={TodoComponent}/>
 							<Route path="/profiles" component={ProfileComponent}/>
 						</Switch>
