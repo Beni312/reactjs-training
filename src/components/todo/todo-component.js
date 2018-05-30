@@ -98,8 +98,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onAddTodoItem: (item) => dispatch({type: types.ADD_TODO_ITEM, payload: {item: item}}),
-		onRemoveTodoItem: (item) => dispatch({type: types.REMOVE_TODO_ITEM, payload: {item: item}})
+		onAddTodoItem: (item) => dispatch({type: types.ADD_TODO_ITEM, payload: item}),
+		onRemoveTodoItem: (item) => dispatch({type: types.REMOVE_TODO_ITEM, payload: item})
 	}
 };
 

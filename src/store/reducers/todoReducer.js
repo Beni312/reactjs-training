@@ -10,13 +10,13 @@ export const reducer = (state = initialState, action) => {
 		case types.ADD_TODO_ITEM:
 			return {
 				...state,
-				items: state.items.concat({id: state.counter, name: action.payload.item}),
+				items: state.items.concat({id: state.counter, name: action.payload}),
 				counter: state.counter + 1
 			};
 		case types.REMOVE_TODO_ITEM:
 			return {
 				...state,
-				items: state.items.filter(item => item.id !== action.payload.item.id)
+				items: state.items.filter(item => item.id !== action.payload.id)
 			};
 		default: {
 			return state;
