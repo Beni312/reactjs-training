@@ -34,7 +34,6 @@ class ProfileComponent extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		if (this.props.loading) {
 			return (
 				<div>loading...</div>
