@@ -9,8 +9,7 @@ describe('Todo reducer test', () => {
 				type: types.ADD_TODO_ITEM,
 				payload: 'item2'
 			});
-			mockItems.push({id: 2, name: 'item2'});
-			expect(result.items).toEqual(mockItems);
+			expect(result.items).toEqual([{id: 0, name: 'item0'}, {id: 1, name: 'item1'}, {id: 2, name: 'item2'}]);
 		});
 	});
 

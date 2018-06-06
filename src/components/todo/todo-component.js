@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './todo-component.css';
 import { connect } from 'react-redux';
-import { types } from '../../store/actions/actionTypes';
+import { actions } from '../../store/reducers/todoReducer';
 
 class ListItems extends Component {
 
@@ -98,8 +98,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onAddTodoItem: (item) => dispatch({type: types.ADD_TODO_ITEM, payload: item}),
-		onRemoveTodoItem: (item) => dispatch({type: types.REMOVE_TODO_ITEM, payload: item})
+		onAddTodoItem: (name) => dispatch(actions.addTodoItem(name)),
+		onRemoveTodoItem: (item) => dispatch(actions.removeTodoItem(item))
 	}
 };
 

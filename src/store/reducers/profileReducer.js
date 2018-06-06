@@ -9,20 +9,23 @@ const initialState = {
 
 export function reducer(state = initialState, action) {
 	switch (action.type) {
-		case types.GET_PROFILES_REQUEST: return {
-			...state,
-			loading: true
-		};
-		case types.GET_PROFILES_SUCCESS: return {
-			...state,
-			profiles: action.payload,
-			loading: false
-		};
-		case types.GET_PROFILES_FAILURE: return {
-			...state,
-			loading: false,
-			error: action.payload
-		};
+		case types.GET_PROFILES_REQUEST:
+			return {
+				...state,
+				loading: true
+			};
+		case types.GET_PROFILES_SUCCESS:
+			return {
+				...state,
+				profiles: action.payload,
+				loading: false
+			};
+		case types.GET_PROFILES_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload
+			};
 		default: {
 			return state;
 		}

@@ -23,3 +23,18 @@ export const reducer = (state = initialState, action) => {
 		}
 	}
 };
+
+export const actions = {
+	addTodoItem(name) {
+		return {
+			type: types.ADD_TODO_ITEM,
+			payload: name
+		}
+	},
+	removeTodoItem(item) {
+		return {
+			type: types.REMOVE_TODO_ITEM,
+			payload: item
+		}
+	}
+};
