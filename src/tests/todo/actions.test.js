@@ -13,4 +13,15 @@ describe('Todo action creator test', () => {
 			expect(result.payload).toEqual('todoItem');
 		})
 	});
+	describe('Remove todo item action', () => {
+		it ('Should contain the REMOVE_TODO_ITEM action type', () => {
+			const result = actions.removeTodoItem('item0');
+			expect(result.type).toEqual(types.REMOVE_TODO_ITEM);
+		});
+
+		it ('Should have the item in the action payload', () => {
+			const result = actions.removeTodoItem({id: 0, item: 'item'});
+			expect(result.payload).toEqual({id: 0, item: 'item'});
+		})
+	});
 });
