@@ -20,8 +20,7 @@ describe('Todo reducer test', () => {
 				type: types.REMOVE_TODO_ITEM,
 				payload: mockItems[1]
 			});
-			mockItems.splice(1, 1);
-			expect(result.items).toEqual(mockItems);
+			expect(result.items).toEqual([{id: 0, name: 'item0'}]);
 		})
 	})
 });
